@@ -135,8 +135,9 @@ const handleInviteUser = async (userData) => {
         onClose={() => setShowInviteModal(false)}
         onSubmit={handleInviteUser}
         loading={inviteLoading}
-      />
+/>
     </div>
+  );
 };
 
 export default TeamPage;
