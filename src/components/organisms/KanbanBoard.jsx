@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { motion } from 'framer-motion';
-import { toast } from 'react-toastify';
-import TaskCard from '@/components/molecules/TaskCard';
-import Button from '@/components/atoms/Button';
-import Card from '@/components/atoms/Card';
-import Empty from '@/components/ui/Empty';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import TaskModal from '@/components/organisms/TaskModal';
-import { taskService } from '@/services/api/taskService';
-import { userService } from '@/services/api/userService';
-import ApperIcon from '@/components/ApperIcon';
+import React, { useEffect, useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import TaskModal from "@/components/organisms/TaskModal";
+import Button from "@/components/atoms/Button";
+import Card from "@/components/atoms/Card";
+import Empty from "@/components/ui/Empty";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
+import TaskCard from "@/components/molecules/TaskCard";
+import { userService } from "@/services/api/userService";
+import { taskService } from "@/services/api/taskService";
 
 const KanbanBoard = ({ projectId }) => {
   const [tasks, setTasks] = useState([]);
@@ -137,16 +137,15 @@ const KanbanBoard = ({ projectId }) => {
                       <h3 className="font-semibold text-gray-800">{column.title}</h3>
                       <span className="text-sm text-gray-500">({columnTasks.length})</span>
                     </div>
+</div>
                   </div>
 
                   <Droppable droppableId={column.id}>
-                    {(provided, snapshot) => (
+                    {(provided) => (
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={`p-4 min-h-[500px] ${
-                          snapshot.isDraggingOver ? 'bg-blue-50' : ''
-                        }`}
+                        className="p-4 min-h-[500px]"
                       >
                         {columnTasks.length === 0 ? (
                           <Empty
@@ -185,7 +184,6 @@ const KanbanBoard = ({ projectId }) => {
                   </Droppable>
                 </Card>
               </motion.div>
-            );
           })}
         </div>
       </DragDropContext>
