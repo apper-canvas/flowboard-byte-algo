@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import Button from '@/components/atoms/Button';
 import Avatar from '@/components/atoms/Avatar';
 import ApperIcon from '@/components/ApperIcon';
-
+import { AuthContext } from '@/App';
 const Header = ({ currentProject, projects, onProjectChange }) => {
   const [showProjectDropdown, setShowProjectDropdown] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
+  const { user } = useSelector((state) => state.user);
 
-  const currentUser = {
+  const currentUser = user || {
     name: "John Doe",
     email: "john@example.com",
     avatar: null
@@ -22,6 +25,10 @@ const Header = ({ currentProject, projects, onProjectChange }) => {
     navigate(`/project/${projectId}`);
   };
 
+  const handleLogout = async () => {
+    setShowUserMenu(false);
+    await logout();
+  };
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -105,12 +112,19 @@ const Header = ({ currentProject, projects, onProjectChange }) => {
                     <p className="font-medium text-gray-800">{currentUser.name}</p>
                     <p className="text-sm text-gray-600">{currentUser.email}</p>
                   </div>
-                  <button
+<button
                     onClick={() => navigate('/settings')}
                     className="w-full text-left px-3 py-2 hover:bg-gray-50 rounded-lg text-sm flex items-center space-x-2"
                   >
                     <ApperIcon name="Settings" className="w-4 h-4" />
                     <span>Settings</span>
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-3 py-2 hover:bg-gray-50 rounded-lg text-sm flex items-center space-x-2 text-red-600"
+                  >
+                    <ApperIcon name="LogOut" className="w-4 h-4" />
+                    <span>Logout</span>
                   </button>
                 </div>
               </motion.div>
