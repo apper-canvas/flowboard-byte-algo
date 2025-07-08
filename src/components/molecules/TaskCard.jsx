@@ -98,12 +98,12 @@ const TaskCard = ({ task, users = [], onClick, isDragging = false }) => {
               <Avatar
                 src={assignee.avatar}
                 initials={assignee.name.split(' ').map(n => n[0]).join('')}
-                size="sm"
+size="sm"
               />
             )}
             <div className="flex items-center space-x-1">
               <ApperIcon name="MessageCircle" className="w-4 h-4 text-gray-400" />
-              <span className="text-xs text-gray-500">{task.comments.length}</span>
+              <span className="text-xs text-gray-500">{task.comments?.length || 0}</span>
             </div>
           </div>
 
