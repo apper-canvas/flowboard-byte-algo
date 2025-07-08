@@ -66,13 +66,6 @@ const KanbanBoard = ({ projectId }) => {
     setShowTaskModal(true);
   };
 
-  const sensors = useSensors(
-useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 8,
-      },
-    })
-  );
 
   const handleDragEnd = async (event) => {
     const { active, over } = event;
