@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import KanbanBoard from '@/components/organisms/KanbanBoard';
-import FilterBar from '@/components/molecules/FilterBar';
-import Button from '@/components/atoms/Button';
-import Badge from '@/components/atoms/Badge';
-import Card from '@/components/atoms/Card';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import { projectService } from '@/services/api/projectService';
-import { taskService } from '@/services/api/taskService';
-import { userService } from '@/services/api/userService';
-import ApperIcon from '@/components/ApperIcon';
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import GanttChart from "@/components/organisms/GanttChart";
+import ApperIcon from "@/components/ApperIcon";
+import KanbanBoard from "@/components/organisms/KanbanBoard";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
+import Card from "@/components/atoms/Card";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
+import FilterBar from "@/components/molecules/FilterBar";
+import { projectService } from "@/services/api/projectService";
+import { userService } from "@/services/api/userService";
+import { taskService } from "@/services/api/taskService";
 const ProjectDetailPage = () => {
   const { projectId } = useParams();
   const [project, setProject] = useState(null);
@@ -22,7 +22,7 @@ const ProjectDetailPage = () => {
   const [error, setError] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [selectedAssignee, setSelectedAssignee] = useState('all');
-
+  const [viewMode, setViewMode] = useState('kanban'); // 'kanban' or 'gantt'
   const loadData = async () => {
     try {
       setLoading(true);
@@ -77,7 +77,27 @@ const ProjectDetailPage = () => {
             <h1 className="text-2xl font-bold text-gray-800">{project.name}</h1>
             <p className="text-gray-600 mt-1">{project.description}</p>
           </div>
-          <div className="flex items-center space-x-3">
+<div className="flex items-center space-x-3">
+            <div className="flex items-center bg-gray-100 rounded-lg p-1">
+              <Button
+                variant={viewMode === 'kanban' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setViewMode('kanban')}
+                className="px-3 py-1.5"
+              >
+                <ApperIcon name="Layout" className="w-4 h-4 mr-2" />
+                Kanban
+              </Button>
+              <Button
+                variant={viewMode === 'gantt' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setViewMode('gantt')}
+                className="px-3 py-1.5"
+              >
+                <ApperIcon name="Calendar" className="w-4 h-4 mr-2" />
+                Gantt
+              </Button>
+            </div>
             <Badge variant="success" size="sm">
               {project.status}
             </Badge>
@@ -137,22 +157,28 @@ const ProjectDetailPage = () => {
             </div>
           </Card>
         </div>
+</div>
       </div>
+      {viewMode === 'kanban' && (
+        <>
+          <div className="p-6">
+            <FilterBar
+              selectedStatus={selectedStatus}
+              onStatusChange={setSelectedStatus}
+              selectedAssignee={selectedAssignee}
+              onAssigneeChange={setSelectedAssignee}
+              users={users}
+              onClearFilters={clearFilters}
+              hasActiveFilters={hasActiveFilters}
+            />
+          </div>
+          <KanbanBoard projectId={parseInt(projectId)} />
+        </>
+      )}
 
-      <div className="p-6">
-        <FilterBar
-          selectedStatus={selectedStatus}
-          onStatusChange={setSelectedStatus}
-          selectedAssignee={selectedAssignee}
-          onAssigneeChange={setSelectedAssignee}
-          users={users}
-          onClearFilters={clearFilters}
-          hasActiveFilters={hasActiveFilters}
-        />
-      </div>
-
-      <KanbanBoard projectId={parseInt(projectId)} />
-    </div>
+      {viewMode === 'gantt' && (
+        <GanttChart projectId={parseInt(projectId)} />
+      )}
   );
 };
 
