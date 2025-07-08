@@ -167,7 +167,7 @@ const ProjectDetailPage = () => {
               onStatusChange={setSelectedStatus}
               selectedAssignee={selectedAssignee}
               onAssigneeChange={setSelectedAssignee}
-              users={users}
+users={users}
               onClearFilters={clearFilters}
               hasActiveFilters={hasActiveFilters}
             />
@@ -179,6 +179,7 @@ const ProjectDetailPage = () => {
       {viewMode === 'gantt' && (
         <GanttChart projectId={parseInt(projectId)} />
       )}
+    </div>
   );
 };
 
