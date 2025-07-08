@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import GanttChart from "@/components/organisms/GanttChart";
 import ApperIcon from "@/components/ApperIcon";
 import KanbanBoard from "@/components/organisms/KanbanBoard";
+import GanttChart from "@/components/organisms/GanttChart";
 import Badge from "@/components/atoms/Badge";
 import Button from "@/components/atoms/Button";
 import Card from "@/components/atoms/Card";
@@ -155,10 +155,10 @@ const ProjectDetailPage = () => {
                 <ApperIcon name="CheckCircle" className="w-5 h-5 text-white" />
               </div>
             </div>
-          </Card>
+</Card>
         </div>
-</div>
       </div>
+      
       {viewMode === 'kanban' && (
         <>
           <div className="p-6">
