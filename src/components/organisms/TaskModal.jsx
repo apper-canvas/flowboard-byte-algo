@@ -10,27 +10,29 @@ import { toast } from 'react-toastify';
 import ApperIcon from '@/components/ApperIcon';
 
 const TaskModal = ({ task, users, onSave, onClose }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: '',
     description: '',
     assigneeId: '',
     priority: 'medium',
     dueDate: '',
-    status: 'todo'
+    status: 'todo',
+    tags: ''
   });
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (task) {
+if (task) {
       setFormData({
         title: task.title || '',
         description: task.description || '',
         assigneeId: task.assigneeId || '',
         priority: task.priority || 'medium',
         dueDate: task.dueDate ? format(new Date(task.dueDate), 'yyyy-MM-dd') : '',
-        status: task.status || 'todo'
+        status: task.status || 'todo',
+        tags: task.Tags || ''
       });
       setComments(task.comments || []);
     }
@@ -117,6 +119,20 @@ const TaskModal = ({ task, users, onSave, onClose }) => {
                 placeholder="Enter task description"
                 className="w-full h-24 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"
               />
+</div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Tags
+              </label>
+              <Input
+                value={formData.tags}
+                onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
+                placeholder="Enter tags separated by commas (e.g., urgent, frontend, bug)"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Separate multiple tags with commas
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -153,7 +169,6 @@ const TaskModal = ({ task, users, onSave, onClose }) => {
                 </select>
               </div>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">

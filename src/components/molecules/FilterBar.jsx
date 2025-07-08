@@ -7,15 +7,24 @@ const FilterBar = ({
   onStatusChange, 
   selectedAssignee, 
   onAssigneeChange, 
+  selectedPriority,
+  onPriorityChange,
   users,
   onClearFilters,
   hasActiveFilters
 }) => {
-  const statusOptions = [
+const statusOptions = [
     { value: 'all', label: 'All Tasks' },
     { value: 'todo', label: 'To Do' },
     { value: 'in-progress', label: 'In Progress' },
     { value: 'done', label: 'Done' }
+  ];
+
+  const priorityOptions = [
+    { value: 'all', label: 'All Priorities' },
+    { value: 'high', label: 'High Priority' },
+    { value: 'medium', label: 'Medium Priority' },
+    { value: 'low', label: 'Low Priority' }
   ];
 
   return (
@@ -37,6 +46,18 @@ const FilterBar = ({
             className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
           >
             {statusOptions.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+
+<select
+            value={selectedPriority}
+            onChange={(e) => onPriorityChange(e.target.value)}
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            {priorityOptions.map(option => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>

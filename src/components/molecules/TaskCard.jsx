@@ -17,6 +17,22 @@ const TaskCard = ({ task, users, onClick, isDragging = false }) => {
     }
   };
 
+  const getPriorityIcon = (priority) => {
+    switch (priority) {
+      case 'high': return 'AlertTriangle';
+      case 'medium': return 'Clock';
+      case 'low': return 'CheckCircle';
+      default: return 'Circle';
+    }
+  };
+
+  const parseTags = (tags) => {
+    if (!tags) return [];
+    return tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+  };
+
+  const tags = parseTags(task.Tags);
+
   const isOverdue = new Date(task.dueDate) < new Date() && task.status !== 'done';
 
   return (
@@ -29,21 +45,54 @@ const TaskCard = ({ task, users, onClick, isDragging = false }) => {
         className={`p-4 cursor-pointer kanban-card ${isDragging ? 'rotate-2 opacity-80' : ''}`}
         onClick={onClick}
       >
-        <div className="flex items-start justify-between mb-3">
+<div className="flex items-start justify-between mb-3">
           <h4 className="font-medium text-gray-800 flex-1 pr-2">
             {task.title}
           </h4>
-          <Badge variant={getPriorityColor(task.priority)} size="sm">
-            {task.priority}
-          </Badge>
+          <div className="flex items-center space-x-1">
+            <ApperIcon 
+              name={getPriorityIcon(task.priority)} 
+              className={`w-4 h-4 ${
+                task.priority === 'high' ? 'text-red-500' : 
+                task.priority === 'medium' ? 'text-yellow-500' : 
+                task.priority === 'low' ? 'text-green-500' : 'text-gray-400'
+              }`}
+            />
+            <Badge variant={getPriorityColor(task.priority)} size="sm">
+              {task.priority}
+            </Badge>
+          </div>
         </div>
 
-        {task.description && (
+{task.description && (
           <p className="text-sm text-gray-600 mb-3 line-clamp-2">
             {task.description}
           </p>
         )}
 
+        {tags.length > 0 && (
+          <div className="flex flex-wrap gap-1 mb-3">
+            {tags.slice(0, 3).map((tag, index) => (
+              <Badge
+                key={index}
+                variant="default"
+                size="sm"
+                className="text-xs bg-blue-100 text-blue-800 border border-blue-200"
+              >
+                {tag}
+              </Badge>
+            ))}
+            {tags.length > 3 && (
+              <Badge
+                variant="default"
+                size="sm"
+                className="text-xs bg-gray-100 text-gray-600"
+              >
+                +{tags.length - 3}
+              </Badge>
+            )}
+          </div>
+        )}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             {assignee && (

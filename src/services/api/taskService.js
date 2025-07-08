@@ -159,7 +159,7 @@ export const taskService = {
 
       const params = {
         records: [
-          {
+{
             project_id: taskData.projectId || taskData.project_id,
             title: taskData.title,
             description: taskData.description,
@@ -167,6 +167,7 @@ export const taskService = {
             priority: taskData.priority || 'medium',
             assignee_id: taskData.assigneeId || taskData.assignee_id,
             due_date: taskData.dueDate || taskData.due_date,
+            Tags: taskData.tags || taskData.Tags || '',
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString()
           }
@@ -218,7 +219,7 @@ export const taskService = {
 
       const params = {
         records: [
-          {
+{
             Id: id,
             title: updateData.title,
             description: updateData.description,
@@ -226,6 +227,7 @@ export const taskService = {
             priority: updateData.priority,
             assignee_id: updateData.assigneeId || updateData.assignee_id,
             due_date: updateData.dueDate || updateData.due_date,
+            Tags: updateData.tags || updateData.Tags || '',
             updated_at: new Date().toISOString()
           }
         ]
