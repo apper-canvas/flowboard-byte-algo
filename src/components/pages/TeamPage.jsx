@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import InviteModal from "@/components/molecules/InviteModal";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
@@ -9,6 +8,7 @@ import Empty from "@/components/ui/Empty";
 import Error from "@/components/ui/Error";
 import Loading from "@/components/ui/Loading";
 import UserRoleCard from "@/components/molecules/UserRoleCard";
+import InviteModal from "@/components/molecules/InviteModal";
 import { userService } from "@/services/api/userService";
 
 const TeamPage = () => {
@@ -113,7 +113,7 @@ const handleInviteUser = async (userData) => {
           animate={{ opacity: 1 }}
           className="space-y-4"
         >
-          {filteredUsers.map((user, index) => (
+{filteredUsers.map((user, index) => (
             <motion.div
               key={user.Id}
               initial={{ opacity: 0, y: 20 }}
@@ -126,7 +126,7 @@ const handleInviteUser = async (userData) => {
                 currentUserRole={currentUserRole}
               />
             </motion.div>
-))}
+          ))}
         </motion.div>
       )}
 
