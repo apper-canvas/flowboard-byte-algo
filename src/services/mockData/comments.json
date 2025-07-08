@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 1,
+    "taskId": 1,
+    "userId": 1,
+    "text": "Great work on the initial mockups! The color scheme looks modern.",
+    "createdAt": "2024-01-16T11:15:00Z"
+  },
+  {
+    "Id": 2,
+    "taskId": 1,
+    "userId": 2,
+    "text": "Thanks! I'll incorporate the feedback and update the design.",
+    "createdAt": "2024-01-16T14:20:00Z"
+  },
+  {
+    "Id": 3,
+    "taskId": 2,
+    "userId": 3,
+    "text": "Navigation structure is complete, working on mobile responsiveness now.",
+    "createdAt": "2024-01-17T16:45:00Z"
+  },
+  {
+    "Id": 4,
+    "taskId": 5,
+    "userId": 4,
+    "text": "Architecture design is complete. Starting implementation phase.",
+    "createdAt": "2024-01-22T09:30:00Z"
+  },
+  {
+    "Id": 5,
+    "taskId": 8,
+    "userId": 6,
+    "text": "Strategy document is complete and ready for review.",
+    "createdAt": "2024-01-24T17:00:00Z"
+  },
+  {
+    "Id": 6,
+    "taskId": 9,
+    "userId": 7,
+    "text": "Email templates are ready and tested across different clients.",
+    "createdAt": "2024-01-29T16:30:00Z"
+  },
+  {
+    "Id": 7,
+    "taskId": 10,
+    "userId": 6,
+    "text": "Venue is booked, working on speaker lineup and catering.",
+    "createdAt": "2024-01-25T13:15:00Z"
+  },
+  {
+    "Id": 8,
+    "taskId": 11,
+    "userId": 9,
+    "text": "Authentication flow is implemented, working on security features.",
+    "createdAt": "2024-01-28T11:30:00Z"
+  }
+]

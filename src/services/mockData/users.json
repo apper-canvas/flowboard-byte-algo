@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "role": "admin",
+    "avatar": null
+  },
+  {
+    "Id": 2,
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "role": "member",
+    "avatar": null
+  },
+  {
+    "Id": 3,
+    "name": "Mike Johnson",
+    "email": "mike@example.com",
+    "role": "member",
+    "avatar": null
+  },
+  {
+    "Id": 4,
+    "name": "Sarah Wilson",
+    "email": "sarah@example.com",
+    "role": "member",
+    "avatar": null
+  },
+  {
+    "Id": 5,
+    "name": "David Brown",
+    "email": "david@example.com",
+    "role": "member",
+    "avatar": null
+  },
+  {
+    "Id": 6,
+    "name": "Emma Davis",
+    "email": "emma@example.com",
+    "role": "member",
+    "avatar": null
+  },
+  {
+    "Id": 7,
+    "name": "Tom Wilson",
+    "email": "tom@example.com",
+    "role": "member",
+    "avatar": null
+  },
+  {
+    "Id": 8,
+    "name": "Alex Chen",
+    "email": "alex@example.com",
+    "role": "member",
+    "avatar": null
+  },
+  {
+    "Id": 9,
+    "name": "Lisa Garcia",
+    "email": "lisa@example.com",
+    "role": "member",
+    "avatar": null
+  },
+  {
+    "Id": 10,
+    "name": "Chris Lee",
+    "email": "chris@example.com",
+    "role": "member",
+    "avatar": null
+  }
+]

@@ -1,0 +1,155 @@
+[
+  {
+    "Id": 1,
+    "name": "Website Redesign",
+    "description": "Complete overhaul of company website with modern design and improved user experience",
+    "status": "active",
+    "progress": 65,
+    "createdAt": "2024-01-15T10:00:00Z",
+    "createdBy": "John Doe",
+    "members": [
+      {
+        "Id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "role": "admin",
+        "avatar": null
+      },
+      {
+        "Id": 2,
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "role": "member",
+        "avatar": null
+      },
+      {
+        "Id": 3,
+        "name": "Mike Johnson",
+        "email": "mike@example.com",
+        "role": "member",
+        "avatar": null
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "name": "Mobile App Development",
+    "description": "Native iOS and Android app for customer engagement and service delivery",
+    "status": "active",
+    "progress": 30,
+    "createdAt": "2024-01-20T14:30:00Z",
+    "createdBy": "Sarah Wilson",
+    "members": [
+      {
+        "Id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "role": "admin",
+        "avatar": null
+      },
+      {
+        "Id": 4,
+        "name": "Sarah Wilson",
+        "email": "sarah@example.com",
+        "role": "member",
+        "avatar": null
+      },
+      {
+        "Id": 5,
+        "name": "David Brown",
+        "email": "david@example.com",
+        "role": "member",
+        "avatar": null
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "name": "Marketing Campaign Q1",
+    "description": "Launch comprehensive marketing campaign for Q1 product releases",
+    "status": "active",
+    "progress": 85,
+    "createdAt": "2024-01-10T09:15:00Z",
+    "createdBy": "Emma Davis",
+    "members": [
+      {
+        "Id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "role": "admin",
+        "avatar": null
+      },
+      {
+        "Id": 6,
+        "name": "Emma Davis",
+        "email": "emma@example.com",
+        "role": "member",
+        "avatar": null
+      },
+      {
+        "Id": 7,
+        "name": "Tom Wilson",
+        "email": "tom@example.com",
+        "role": "member",
+        "avatar": null
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "name": "Database Migration",
+    "description": "Migrate legacy database to modern cloud infrastructure",
+    "status": "completed",
+    "progress": 100,
+    "createdAt": "2023-12-01T11:00:00Z",
+    "createdBy": "Alex Chen",
+    "members": [
+      {
+        "Id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "role": "admin",
+        "avatar": null
+      },
+      {
+        "Id": 8,
+        "name": "Alex Chen",
+        "email": "alex@example.com",
+        "role": "member",
+        "avatar": null
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "name": "Customer Portal",
+    "description": "Self-service portal for customers to manage accounts and support tickets",
+    "status": "active",
+    "progress": 45,
+    "createdAt": "2024-01-25T16:45:00Z",
+    "createdBy": "Lisa Garcia",
+    "members": [
+      {
+        "Id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "role": "admin",
+        "avatar": null
+      },
+      {
+        "Id": 9,
+        "name": "Lisa Garcia",
+        "email": "lisa@example.com",
+        "role": "member",
+        "avatar": null
+      },
+      {
+        "Id": 10,
+        "name": "Chris Lee",
+        "email": "chris@example.com",
+        "role": "member",
+        "avatar": null
+      }
+    ]
+  }
+]

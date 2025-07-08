@@ -1,0 +1,91 @@
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
+import Card from '@/components/atoms/Card';
+import Avatar from '@/components/atoms/Avatar';
+import Badge from '@/components/atoms/Badge';
+import ApperIcon from '@/components/ApperIcon';
+
+const ProjectCard = ({ project }) => {
+  const navigate = useNavigate();
+
+  const getProgressColor = (progress) => {
+    if (progress >= 80) return 'text-green-500';
+    if (progress >= 50) return 'text-yellow-500';
+    return 'text-red-500';
+  };
+
+  const handleClick = () => {
+    navigate(`/project/${project.Id}`);
+  };
+
+  return (
+    <motion.div
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Card hover className="p-6 cursor-pointer" onClick={handleClick}>
+        <div className="flex items-start justify-between mb-4">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              {project.name}
+            </h3>
+            <p className="text-gray-600 text-sm line-clamp-2">
+              {project.description}
+            </p>
+          </div>
+          <Badge variant={project.status === 'active' ? 'success' : 'default'} size="sm">
+            {project.status}
+          </Badge>
+        </div>
+
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-2">
+            <ApperIcon name="Calendar" className="w-4 h-4 text-gray-400" />
+            <span className="text-sm text-gray-500">
+              {format(new Date(project.createdAt), 'MMM d, yyyy')}
+            </span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span className={`text-sm font-medium ${getProgressColor(project.progress)}`}>
+              {project.progress}%
+            </span>
+            <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-300"
+                style={{ width: `${project.progress}%` }}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between">
+          <div className="avatar-stack">
+            {project.members.slice(0, 3).map((member, index) => (
+              <Avatar
+                key={member.Id}
+                src={member.avatar}
+                initials={member.name.split(' ').map(n => n[0]).join('')}
+                size="sm"
+                className="avatar"
+              />
+            ))}
+            {project.members.length > 3 && (
+              <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-xs text-gray-600 font-medium border-2 border-white -ml-2">
+                +{project.members.length - 3}
+              </div>
+            )}
+          </div>
+          <div className="flex items-center space-x-2">
+            <ApperIcon name="Users" className="w-4 h-4 text-gray-400" />
+            <span className="text-sm text-gray-500">
+              {project.members.length} members
+            </span>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+};
+
+export default ProjectCard;
