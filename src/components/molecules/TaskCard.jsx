@@ -5,9 +5,8 @@ import Avatar from '@/components/atoms/Avatar';
 import Badge from '@/components/atoms/Badge';
 import ApperIcon from '@/components/ApperIcon';
 
-const TaskCard = ({ task, users, onClick, isDragging = false }) => {
-  const assignee = users.find(user => user.Id === task.assigneeId);
-  
+const TaskCard = ({ task, users = [], onClick, isDragging = false }) => {
+  const assignee = users?.find(user => user.Id === task.assigneeId);
   const getPriorityColor = (priority) => {
     switch (priority) {
       case 'high': return 'danger';
