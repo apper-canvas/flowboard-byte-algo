@@ -130,14 +130,13 @@ const KanbanBoard = ({ projectId }) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="h-full">
+<Card className="h-full">
                   <div className="p-4 border-b border-gray-200">
                     <div className="flex items-center space-x-3">
                       <div className={`w-3 h-3 rounded-full ${column.color}`} />
                       <h3 className="font-semibold text-gray-800">{column.title}</h3>
                       <span className="text-sm text-gray-500">({columnTasks.length})</span>
                     </div>
-</div>
                   </div>
 
                   <Droppable droppableId={column.id}>
@@ -181,9 +180,10 @@ const KanbanBoard = ({ projectId }) => {
                         {provided.placeholder}
                       </div>
                     )}
-                  </Droppable>
+</Droppable>
                 </Card>
               </motion.div>
+            );
           })}
         </div>
       </DragDropContext>
