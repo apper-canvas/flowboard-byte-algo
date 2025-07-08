@@ -31,8 +31,10 @@ const TaskCard = ({ task, users = [], onClick, isDragging = false }) => {
   };
 
   const tags = parseTags(task.Tags);
-
-  const isOverdue = new Date(task.dueDate) < new Date() && task.status !== 'done';
+const isOverdue = task.dueDate && 
+    !isNaN(new Date(task.dueDate)) && 
+    new Date(task.dueDate) < new Date() && 
+    task.status !== 'done';
 
   return (
     <motion.div
@@ -112,9 +114,11 @@ size="sm"
               name="Calendar" 
               className={`w-4 h-4 ${isOverdue ? 'text-red-500' : 'text-gray-400'}`} 
             />
-            <span className={`text-xs ${isOverdue ? 'text-red-500' : 'text-gray-500'}`}>
-              {format(new Date(task.dueDate), 'MMM d')}
-            </span>
+{task.dueDate && !isNaN(new Date(task.dueDate)) && (
+              <span className={`text-xs ${isOverdue ? 'text-red-500' : 'text-gray-500'}`}>
+                {format(new Date(task.dueDate), 'MMM d')}
+              </span>
+            )}
           </div>
         </div>
       </Card>
