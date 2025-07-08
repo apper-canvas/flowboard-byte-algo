@@ -68,9 +68,9 @@ const handleCreateProject = async (e) => {
     }
   };
 
-  const filteredProjects = projects.filter(project =>
-    project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    project.description.toLowerCase().includes(searchTerm.toLowerCase())
+const filteredProjects = projects.filter(project =>
+    (project.name?.toLowerCase() ?? '').includes(searchTerm.toLowerCase()) ||
+    (project.description?.toLowerCase() ?? '').includes(searchTerm.toLowerCase())
   );
 
   if (loading) return <Loading type="projects" />;
